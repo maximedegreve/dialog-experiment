@@ -29,18 +29,20 @@ function Playground() {
                 <Sheet.Container>
                     <Sheet.Header />
                     <Sheet.Content>
-                        <Box sx={{ display: 'grid', gap: 4, p: 5 }}>
-                            <Block>Test 1</Block>
-                            <Block>Test 2</Block>
-                            <Block>Test 3</Block>
-                            <Block>Test 4</Block>
-                            <Block>Test 5</Block>
-                            <Block>Test 6</Block>
-                            <Block>Test 7</Block>
-                            <Block>Test 8</Block>
-                            <Block>Test 9</Block>
-                            <Block>Test 10</Block>
-                        </Box>
+                        <Sheet.Scroller>
+                            <Box sx={{ display: 'grid', gap: 4, p: 5 }}>
+                                <Block>Test 1</Block>
+                                <Block>Test 2</Block>
+                                <Block>Test 3</Block>
+                                <Block>Test 4</Block>
+                                <Block>Test 5</Block>
+                                <Block>Test 6</Block>
+                                <Block>Test 7</Block>
+                                <Block>Test 8</Block>
+                                <Block>Test 9</Block>
+                                <Block>Test 10</Block>
+                            </Box>
+                        </Sheet.Scroller>
                     </Sheet.Content>
                 </Sheet.Container>
                 <Sheet.Backdrop />

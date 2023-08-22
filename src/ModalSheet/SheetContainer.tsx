@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { motion } from 'framer-motion'
+import { Box } from '@primer/react'
 
 import { SheetContainerProps } from './types'
 import { useSheetContext } from './context'
@@ -7,6 +8,8 @@ import { useEventCallbacks } from './hooks'
 import { MAX_HEIGHT } from './constants'
 import { mergeRefs } from './utils'
 import styles from './styles'
+
+let AnimatedBox = motion(Box)
 
 const SheetContainer = React.forwardRef<any, SheetContainerProps>(
     ({ children, style = {}, ...rest }, ref) => {
@@ -35,7 +38,7 @@ const SheetContainer = React.forwardRef<any, SheetContainerProps>(
                 : MAX_HEIGHT
 
         return (
-            <motion.div
+            <AnimatedBox
                 {...rest}
                 ref={mergeRefs([sheetRef, ref])}
                 style={{
@@ -51,7 +54,7 @@ const SheetContainer = React.forwardRef<any, SheetContainerProps>(
                 onAnimationComplete={handleAnimationComplete}
             >
                 {children}
-            </motion.div>
+            </AnimatedBox>
         )
     }
 )

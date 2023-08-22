@@ -23,7 +23,7 @@ const SheetBackdrop = React.forwardRef<any, SheetBackdropProps>(
                     left: 0,
                     width: '100%',
                     height: '100%',
-                    bg: 'canvas.overlay',
+                    bg: 'neutral.muted',
                     touchAction: 'none', // Disable iOS body scrolling
                     border: 'none',
                     pointerEvents,

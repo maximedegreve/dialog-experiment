@@ -7,12 +7,11 @@ import { useSheetContext } from './context'
 import { useEventCallbacks } from './hooks'
 import { MAX_HEIGHT } from './constants'
 import { mergeRefs } from './utils'
-import styles from './styles'
 
 let AnimatedBox = motion(Box)
 
 const SheetContainer = React.forwardRef<any, SheetContainerProps>(
-    ({ children, style = {}, ...rest }, ref) => {
+    ({ children, ...rest }, ref) => {
         const {
             y,
             isOpen,
@@ -42,11 +41,23 @@ const SheetContainer = React.forwardRef<any, SheetContainerProps>(
                 {...rest}
                 ref={mergeRefs([sheetRef, ref])}
                 style={{
-                    ...styles.container,
-                    ...style,
                     ...(detent === 'full-height' && { height }),
                     ...(detent === 'content-height' && { maxHeight: height }),
                     y,
+                }}
+                sx={{
+                    zIndex: 2,
+                    position: 'absolute',
+                    left: 0,
+                    bottom: 0,
+                    width: '100%',
+                    bg: 'canvas.default',
+                    borderTopRightRadius: '12px',
+                    borderTopLeftRadius: '12px',
+                    boxShadow: '0px -2px 16px rgba(0, 0, 0, 0.3)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    pointerEvents: 'auto',
                 }}
                 initial={reduceMotion ? false : { y: windowHeight }}
                 animate={{ y: initialY, transition: animationOptions }}

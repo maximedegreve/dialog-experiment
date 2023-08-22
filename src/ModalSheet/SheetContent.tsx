@@ -8,7 +8,7 @@ import { useSheetScrollerContext, useSheetContext } from './context'
 let AnimatedBox = motion(Box)
 
 const SheetContent = React.forwardRef<any, SheetDraggableProps>(
-    ({ children, style, disableDrag, ...rest }, ref) => {
+    ({ children, disableDrag, ...rest }, ref) => {
         const sheetContext = useSheetContext()
         const sheetScrollerContext = useSheetScrollerContext()
 

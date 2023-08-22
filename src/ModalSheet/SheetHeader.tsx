@@ -1,12 +1,14 @@
 import * as React from 'react'
 import { motion, useTransform } from 'framer-motion'
+import { Box } from '@primer/react'
 
 import { SheetDraggableProps } from './types'
 import { useSheetContext } from './context'
-import styles from './styles'
+
+let AnimatedBox = motion(Box)
 
 const SheetHeader = React.forwardRef<any, SheetDraggableProps>(
-    ({ children, style, disableDrag, ...rest }, ref) => {
+    ({ children, disableDrag, ...rest }, ref) => {
         const { indicatorRotation, dragProps } = useSheetContext()
         const _dragProps = disableDrag ? undefined : dragProps
 
@@ -21,29 +23,46 @@ const SheetHeader = React.forwardRef<any, SheetDraggableProps>(
         )
 
         return (
-            <motion.div
+            <AnimatedBox
                 {...rest}
                 ref={ref}
-                style={{ ...styles.headerWrapper, ...style }}
+                sx={{ width: '100%' }}
                 {..._dragProps}
             >
                 {children || (
-                    <div style={styles.header}>
-                        <motion.span
-                            style={{
-                                ...styles.indicator,
-                                transform: indicator1Transform,
+                    <Box
+                        sx={{
+                            height: 40,
+                            width: '100%',
+                            position: 'relative',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <AnimatedBox
+                            as="span"
+                            sx={{
+                                width: 18,
+                                height: 4,
+                                borderRadius: 2,
+                                bg: 'border.default',
                             }}
+                            style={{ transform: indicator1Transform }}
                         />
-                        <motion.span
-                            style={{
-                                ...styles.indicator,
-                                transform: indicator2Transform,
+                        <AnimatedBox
+                            as="span"
+                            sx={{
+                                width: '18px',
+                                height: '4px',
+                                borderRadius: '99px',
+                                bg: 'border.default',
                             }}
+                            style={{ transform: indicator2Transform }}
                         />
-                    </div>
+                    </Box>
                 )}
-            </motion.div>
+            </AnimatedBox>
         )
     }
 )

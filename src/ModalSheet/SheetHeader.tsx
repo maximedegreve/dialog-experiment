@@ -43,7 +43,7 @@ const SheetHeader = React.forwardRef<any, SheetDraggableProps>(
                         <AnimatedBox
                             as="span"
                             sx={{
-                                width: 18,
+                                width: 24,
                                 height: 4,
                                 borderRadius: 2,
                                 bg: 'border.default',
@@ -53,7 +53,7 @@ const SheetHeader = React.forwardRef<any, SheetDraggableProps>(
                         <AnimatedBox
                             as="span"
                             sx={{
-                                width: '18px',
+                                width: 24,
                                 height: '4px',
                                 borderRadius: '99px',
                                 bg: 'border.default',

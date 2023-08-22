@@ -1,6 +1,6 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
 import { Box } from '@primer/react'
+import * as ReactDOM from 'react-dom'
 
 import {
     animate,
@@ -22,7 +22,6 @@ import {
 
 import {
     REDUCED_MOTION_TWEEN_CONFIG,
-    DEFAULT_TWEEN_CONFIG,
     DRAG_CLOSE_THRESHOLD,
     DRAG_VELOCITY_THRESHOLD,
     IS_SSR,
@@ -47,13 +46,13 @@ const Sheet = React.forwardRef<any, SheetProps>(
             children,
             isOpen,
             snapPoints,
+            hidden,
             rootId,
             mountPoint,
             detent = 'full-height',
             initialSnap = 0,
             disableDrag = false,
             prefersReducedMotion = false,
-            tweenConfig = DEFAULT_TWEEN_CONFIG,
             ...rest
         },
         ref
@@ -63,9 +62,15 @@ const Sheet = React.forwardRef<any, SheetProps>(
         const windowHeight = useWindowHeight()
         const shouldReduceMotion = useReducedMotion()
         const reduceMotion = Boolean(prefersReducedMotion || shouldReduceMotion)
+
         const animationOptions: Transition = {
             type: 'tween',
-            ...(reduceMotion ? REDUCED_MOTION_TWEEN_CONFIG : tweenConfig),
+            ...(reduceMotion
+                ? REDUCED_MOTION_TWEEN_CONFIG
+                : {
+                      ease: 'easeOut',
+                      duration: 0.2,
+                  }),
         }
 
         // NOTE: the inital value for `y` doesn't matter since it is overwritten by

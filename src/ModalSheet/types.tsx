@@ -3,7 +3,6 @@ import {
     MotionValue,
     motion,
     MotionProps,
-    EasingDefinition,
     Transition,
 } from 'framer-motion'
 
@@ -17,11 +16,6 @@ export type SheetEvents = {
 
 export type SheetDetent = 'full-height' | 'content-height'
 
-export type SheetTweenConfig = {
-    ease: EasingDefinition
-    duration: number
-}
-
 export type SheetProps = {
     isOpen: boolean
     children: React.ReactNode
@@ -31,7 +25,6 @@ export type SheetProps = {
     snapPoints?: number[]
     detent?: SheetDetent
     initialSnap?: number // index of snap points array
-    tweenConfig?: SheetTweenConfig
     disableDrag?: boolean
     prefersReducedMotion?: boolean
 } & SheetEvents &

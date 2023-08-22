@@ -6,10 +6,7 @@ import { SheetScrollerProps } from './types'
 import { isTouchDevice } from './utils'
 
 const SheetScroller = React.forwardRef<any, SheetScrollerProps>(
-    (
-        { draggableAt = 'top', children, style, className = '', ...rest },
-        ref
-    ) => {
+    ({ draggableAt = 'top', children, style, ...rest }, ref) => {
         const sheetScrollerContext = useSheetScrollerContext()
 
         function determineDragState(element: HTMLDivElement) {
@@ -49,7 +46,6 @@ const SheetScroller = React.forwardRef<any, SheetScrollerProps>(
             <Box
                 {...rest}
                 ref={ref}
-                className={`react-modal-sheet-scroller ${className}`}
                 sx={{ height: '100%', overflowY: 'auto' }}
                 {...scrollProps}
             >

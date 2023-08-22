@@ -8,7 +8,7 @@ const isClickable = (props: any) => !!props.onClick || !!props.onTap
 let AnimatedBox = motion(Box)
 
 const SheetBackdrop = React.forwardRef<any, SheetBackdropProps>(
-    ({ style = {}, className = '', ...rest }, ref) => {
+    ({ style = {}, ...rest }, ref) => {
         const pointerEvents = isClickable(rest) ? 'auto' : 'none'
 
         return (
@@ -16,7 +16,6 @@ const SheetBackdrop = React.forwardRef<any, SheetBackdropProps>(
                 {...rest}
                 ref={ref}
                 as={isClickable(rest) ? 'button' : 'div'}
-                className={`react-modal-sheet-backdrop ${className}`}
                 sx={{
                     zIndex: 1,
                     position: 'fixed',

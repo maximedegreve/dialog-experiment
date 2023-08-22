@@ -30,16 +30,16 @@ function Playground() {
                     <Sheet.Header />
                     <Sheet.Content>
                         <Box sx={{ display: 'grid', gap: 4, p: 5 }}>
-                            <Block>test 1</Block>
-                            <Block>test 2</Block>
-                            <Block>test 3</Block>
-                            <Block>test 4</Block>
-                            <Block>test 5</Block>
-                            <Block>test 6</Block>
-                            <Block>test 7</Block>
-                            <Block>test 8</Block>
-                            <Block>test 9</Block>
-                            <Block>test 10</Block>
+                            <Block>Test 1</Block>
+                            <Block>Test 2</Block>
+                            <Block>Test 3</Block>
+                            <Block>Test 4</Block>
+                            <Block>Test 5</Block>
+                            <Block>Test 6</Block>
+                            <Block>Test 7</Block>
+                            <Block>Test 8</Block>
+                            <Block>Test 9</Block>
+                            <Block>Test 10</Block>
                         </Box>
                     </Sheet.Content>
                 </Sheet.Container>

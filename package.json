@@ -10,7 +10,7 @@
         "@primer/primitives": "^7.11.1",
         "@primer/react": "^35.28.0",
         "@react-aria/utils": "^3.19.0",
-        "@types/jest": "^29.5.3",
+        "@types/jest": "^29.5.6",
         "@types/node": "^20.5.1",
         "@types/react": "^18.2.20",
         "@types/react-dom": "^18.2.7",

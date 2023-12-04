@@ -15,6 +15,11 @@ function Playground() {
     let isDragging = useRef(false)
     let sheetHeight = useRef(0)
 
+    // Accessibility
+    const isReduced =
+        window.matchMedia(`(prefers-reduced-motion: reduce)`) === true ||
+        window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true
+
     const showBottomSheet = () => {
         setOpen(true)
         updateSheetHeight(50)
@@ -32,7 +37,9 @@ function Playground() {
     const dragStop = (e) => {
         isDragging.current = false
         const sheetHeight = parseInt(sheetContentRef.current?.style.height ?? 0)
-        sheetContentRef.current.style.transition = '0.3s ease'
+        sheetContentRef.current.style.transition = isReduced
+            ? 'none'
+            : '0.3s ease'
 
         if (sheetHeight < 25) {
             return hideBottomSheet()
@@ -83,6 +90,7 @@ function Playground() {
     }, [])
 
     const isFullScreen = sheetHeight?.current === 100
+
     return (
         <Box sx={{ minHeight: '100vh', bg: 'canvas.default' }}>
             <Button onClick={() => showBottomSheet()}>Show Bottom Sheet</Button>
@@ -100,7 +108,7 @@ function Playground() {
                     flexDirection: 'column',
                     justifyContent: 'flex-end',
                     alignItems: 'center',
-                    transition: '0.1s linear',
+                    transition: isReduced ? 'none' : '0.1s linear',
                 }}
             >
                 <Box
@@ -113,8 +121,7 @@ function Playground() {
                         zIndex: -1,
                         width: '100%',
                         height: '100%',
-                        opacity: 0.2,
-                        bg: 'black',
+                        bg: 'primer.canvas.backdrop',
                     }}
                 ></Box>
                 <Box
@@ -159,6 +166,7 @@ function Playground() {
                             ></Box>
                         </Box>
                     </Box>
+
                     <Box
                         className="body"
                         sx={{
